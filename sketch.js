@@ -10,10 +10,10 @@ var accelX = 0.0, accelY = 0.0;
 var deltaX = 0.0, deltaY = 0.0;
 var springing = 0.0009, damping = .98;
 
-//corner nodes
+// corner nodes
 var nodes = 5;
 
-//zero fill arrays
+// zero fill arrays
 var nodeStartX = [];
 var nodeStartY = [];
 var nodeX = [];
@@ -24,7 +24,7 @@ var frequency = [];
 // soft-body dynamics
 var organicConstant = 1.0;
 
-//creating new array
+// creating new array
 let wiggle = []
 
 // load background image
@@ -34,16 +34,16 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //creating new "wiggles"
+  // creating new "wiggles"
   for (var i=0; i<num_wiggle; i++){
     wiggle[i] = new Wiggle(random(0, 400), random(0, 400), 120, 120);
   }
 
-  //center shape in window
+  // center shape in window
   centerX = width/2;
   centerY = height/2;
 
-  //initialize arrays to 0
+  // initialize arrays to 0
   for (var i=0; i<nodes; i++){
     nodeStartX[i] = 0;
     nodeStartY[i] = 0;
@@ -65,7 +65,7 @@ function draw() {
   fill(0)
   rect(0,0,width, height);
   for(let i = 0; i<wiggle.length; i++){
-      wiggle[i].draw(); //reflecting the length of the array that I'm creating
+      wiggle[i].draw(); // reflecting the length of the array that I'm creating
       wiggle[i].move();
   }
 }
@@ -80,7 +80,7 @@ class Wiggle{
     }
   
     move(){
-      //move center point based on mous position, put in constructor function to define each object
+      // move center point based on mous position, put in constructor function to define each object
       deltaX = mouseX-centerX;
       deltaY = mouseY-centerY;
        
@@ -133,7 +133,7 @@ class Wiggle{
         }
       endShape(CLOSE);
 
-      //using different keys to change the rotation of the shape (specifically, the rotation of its nodes)
+      // using different keys to change the rotation of the shape (specifically, the rotation of its nodes)
       if (keyCode === UP_ARROW){
         rotAngle += 100.0/nodes;
       } else rotAngle += 360.0/nodes
